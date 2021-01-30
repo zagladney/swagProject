@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://swagtileset.tres" type="TileSet" id=1]
+[ext_resource path="res://TileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main.gd" type="Script" id=3]
+
+[node name="main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="tilemap" parent="." instance=ExtResource( 2 )]
+
+[node name="nav" type="Navigation2D" parent="."]
+
+[node name="tilemap_nav" type="TileMap" parent="nav"]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327680, 9, 0, 327681, 9, 0, 327682, 9, 0, 327683, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 9, 0, 327688, 9, 0, 327689, 9, 0, 327690, 9, 0, 327691, 9, 0, 327692, 9, 0, 327693, 9, 0, 327694, 9, 0, 327695, 9, 0, 327696, 9, 0, 327697, 9, 0, 327698, 9, 0, 327699, 9, 0, 327700, 9, 0, 327701, 9, 0, 327702, 9, 0, 327703, 9, 0, 327704, 9, 0, 327705, 9, 0 )
+
+[node name="start_position" type="Position2D" parent="."]
+position = Vector2( 2.24487, 352.453 )
+
+[node name="end_position" type="Position2D" parent="."]
+position = Vector2( 1663.49, 350.208 )
+
+[node name="entities" type="YSort" parent="."]
+
+[node name="mob_spawn_timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="mob_spawn_timer" to="." method="_on_mob_spawn_timer_timeout"]
